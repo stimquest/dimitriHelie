@@ -20,19 +20,32 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-brand-lighter/30 to-white relative">
+    <section id="services" className="relative">
+
+      {/* Hero visuel — image voile */}
+      <div className="relative h-72 md:h-96 overflow-hidden">
+         <img
+           src="/images/voile-visuel.jpeg"
+           alt="Préparation mentale et performance"
+           className="w-full h-full object-cover object-center"
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/80"></div>
+         <div className="absolute inset-0 flex items-center justify-center text-center">
+            <div className="max-w-3xl px-6">
+               <span className="text-brand-light font-semibold text-xs uppercase tracking-wider mb-3 block">Offre d'accompagnement</span>
+               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+                 Des solutions adaptées à <br/>vos enjeux de performance
+               </h2>
+               <p className="text-slate-300 text-lg max-w-xl mx-auto">
+                  Que vous soyez athlète, étudiant ou dirigeant, je vous propose des formats d'intervention ciblés et structurés.
+               </p>
+            </div>
+         </div>
+      </div>
+
+      {/* Contenu services */}
+      <div className="py-20 bg-gradient-to-b from-white to-brand-lighter/20">
       <div className="container mx-auto px-6">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-brand font-semibold text-xs uppercase tracking-wider mb-2 block">Offre d'accompagnement</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-800 mb-6">
-            Des solutions adaptées à <br/>vos enjeux de performance
-          </h2>
-          <p className="text-slate-500 text-lg">
-             Que vous soyez athlète, étudiant ou dirigeant, je vous propose des formats d'intervention ciblés et structurés.
-          </p>
-        </div>
 
         {/* Formats d'intervention */}
         <div className="mb-10">
@@ -140,6 +153,7 @@ const ServicesSection: React.FC = () => {
            </div>
         </div>
 
+      </div>
       </div>
 
       <AnimatePresence>
