@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+
+// Données des articles de blog (à remplacer par un CMS ou des fichiers markdown plus tard)
+const blogPosts = [
+  {
+    slug: "preparation-mentale-sportifs",
+    title: "La préparation mentale pour les sportifs : les clés de la performance",
+    excerpt: "Découvrez comment la préparation mentale peut transformer votre approche de la compétition et vous aider à atteindre vos objectifs.",
+    date: "2024-01-15",
+    image: "/images/IMG_7764.jpg",
+    category: "Sport"
+  },
+  {
+    slug: "gerer-stress-performance",
+    title: "Comment gérer le stress pour optimiser sa performance",
+    excerpt: "Le stress n'est pas toujours votre ennemi. Apprenez à le canaliser pour en faire un allié de votre performance.",
+    date: "2024-01-08",
+    image: "/images/pexels-olly-3764164.jpg",
+    category: "Performance"
+  },
+  {
+    slug: "confiance-en-soi-athletes",
+    title: "Construire une confiance solide : le pilier de la réussite",
+    excerpt: "La confiance en soi ne s'improvise pas. Voici les étapes clés pour développer une confiance durable et résiliente.",
+    date: "2023-12-20",
+    image: "/images/voile-visuel.jpeg",
+    category: "Développement personnel"
+  }
+];
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+}
+---
+
+<Layout title="Blog | Dimitri Helie - Préparation Mentale">
+  <Navbar client:load />
+  
+  <main class="pt-24 pb-16">
+    {/* Hero Section */}
+    <section class="bg-gradient-to-b from-brand-lighter/50 to-white py-16">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="text-brand font-semibold text-sm uppercase tracking-wider mb-4 block">Blog</span>
+          <h1 class="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+            Insights & <span class="gradient-text">Conseils</span>
+          </h1>
+          <p class="text-lg text-slate-500">
+            Des articles sur la préparation mentale, la performance et le développement personnel pour vous aider à atteindre vos objectifs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Blog Posts Grid */}
+    <section class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post) => (
+            <article class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-200 hover:border-brand hover:shadow-lg transition-all group">
+              <a href={`/blog/${post.slug}`} class="block">
+                <div class="aspect-video overflow-hidden bg-slate-100">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="px-3 py-1 bg-brand-lighter text-brand text-xs font-semibold rounded-full">
+                      {post.category}
+                    </span>
+                    <span class="text-xs text-slate-400">{formatDate(post.date)}</span>
+                  </div>
+                  <h2 class="font-display text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                    {post.title}
+                  </h2>
+                  <p class="text-slate-500 text-sm leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>
