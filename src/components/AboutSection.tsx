@@ -65,14 +65,14 @@ const AboutSection: React.FC = () => {
                 </h3>
                 <button 
                    onClick={() => setShowDiplomas(true)}
-                   className="flex items-center gap-2 px-4 py-2 bg-brand-lighter text-brand rounded-xl font-semibold text-sm hover:bg-brand hover:text-white transition-all"
+                   className="flex items-center gap-2 px-4 py-2 bg-brand-lighter text-brand rounded-xl font-semibold text-sm hover:bg-brand hover:text-white hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color,color] duration-300"
                 >
                    <FileText size={18} /> Voir les diplômes
                 </button>
              </div>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {diplomas.map((diploma, idx) => (
-                   <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand hover:shadow-card transition-all">
+                   	<div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand hover:shadow-card hover:-translate-y-1 transform-gpu transition-[transform,box-shadow,border-color] duration-300">
                       <BadgeCheck className="text-brand mb-4" size={32} />
                       <h4 className="font-bold text-slate-800 mb-2">{diploma.title}</h4>
                       <p className="text-xs font-semibold uppercase text-brand mb-3">{diploma.institution} {diploma.year && `- ${diploma.year}`}</p>

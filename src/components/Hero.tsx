@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
+import { Calendar, Brain } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -37,14 +37,14 @@ const Hero: React.FC = () => {
                 <a 
                   href="https://calendly.com/" 
                   target="_blank"
-                  className="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-xl font-semibold transition-all hover:bg-brand-dark hover:shadow-glow"
+                  className="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-xl font-semibold shadow-soft hover:bg-brand-dark hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color] duration-300"
                 >
                   <Calendar size={18} />
                   Prendre un RDV
                 </a>
                 <a 
                   href="#services" 
-                  className="inline-flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 px-8 py-4 rounded-xl font-semibold transition-all hover:border-brand hover:text-brand hover:shadow-soft"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 px-8 py-4 rounded-xl font-semibold hover:border-brand hover:text-brand hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,border-color,color] duration-300"
                 >
                   Découvrir mes services
                 </a>
@@ -67,13 +67,24 @@ const Hero: React.FC = () => {
                 />
                 {/* Overlay gradient subtle */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
-                
-                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-soft max-w-xs">
-                   <p className="font-bold text-slate-800 text-lg mb-1">Architecture Cognitive</p>
-                   <p className="text-sm text-slate-500">Une méthode structurée pour des résultats concrets.</p>
+             </motion.div>
+
+             {/* Architecture Cognitive badge — posé sur le coin */}
+             <motion.div
+               initial={{ opacity: 0, y: 12 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.5, delay: 0.6 }}
+               className="absolute -bottom-5 -right-4 lg:-right-6 bg-white rounded-2xl shadow-lg ring-1 ring-slate-900/5 px-5 py-4 flex items-center gap-4 max-w-[260px]"
+             >
+                <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center shrink-0">
+                   <Brain size={20} className="text-white" />
+                </div>
+                <div>
+                   <p className="font-display font-bold text-slate-800 text-sm leading-tight">Architecture Cognitive</p>
+                   <p className="text-xs text-slate-400 mt-0.5">Méthode structurée pour des résultats concrets</p>
                 </div>
              </motion.div>
-             
+
              {/* Decorative elements */}
              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-brand-light rounded-full -z-10 blur-3xl opacity-60"></div>
              <div className="absolute -top-8 -left-8 w-32 h-32 bg-secondary-light rounded-full -z-10 blur-2xl opacity-60"></div>

@@ -14,10 +14,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'À propos', href: '#about' },
-    { name: 'Services', href: '#services' },
+    { name: 'À propos', href: '/#about' },
+    { name: 'Services', href: '/#services' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group">
           <div className="text-brand transition-transform duration-300 group-hover:scale-110">
             <Brain size={32} strokeWidth={1.5} />
           </div>
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           <a 
             href="https://calendly.com/" 
             target="_blank"
-            className="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all hover:shadow-glow"
+            className="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color] duration-300"
           >
             Prendre RDV
           </a>
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
           ))}
           <a 
             href="https://calendly.com/"
-            className="bg-brand text-white px-8 py-4 rounded-xl font-semibold shadow-soft"
+            className="bg-brand text-white px-8 py-4 rounded-xl font-semibold shadow-soft hover:-translate-y-0.5 active:translate-y-0 hover:shadow-glow transition-[transform,box-shadow] duration-300"
           >
              Prendre RDV
           </a>

@@ -357,3 +357,118 @@ export const services: ServiceModule[] = [
     image: "/images/379636872_1045656246459816_803858230480871231_n.jpg"
   }
 ];
+
+// Données des articles de blog (utilisées par src/pages/blog/[slug].astro)
+// NOTE: définies dans un module TS pour rester accessibles au scope module (getStaticPaths)
+export const blogPosts = {
+	"preparation-mentale-sportifs": {
+		title: "La préparation mentale pour les sportifs : les clés de la performance",
+		excerpt:
+			"Découvrez comment la préparation mentale peut transformer votre approche de la compétition et vous aider à atteindre vos objectifs.",
+		date: "2024-01-15",
+		image: "/images/IMG_7764.jpg",
+		category: "Sport",
+		author: "Dimitri Helie",
+		content: `
+			<p>La préparation mentale est devenue un élément incontournable pour tout sportif souhaitant atteindre son plein potentiel. Au-delà de l'entraînement physique et technique, c'est le mental qui fait souvent la différence au moment crucial.</p>
+			
+			<h2>Pourquoi la préparation mentale est essentielle ?</h2>
+			<p>Que vous soyez un athlète de haut niveau ou un sportif amateur passionné, votre mental influence directement vos performances. La capacité à rester concentré sous pression, à gérer le stress de la compétition et à maintenir une confiance inébranlable sont des compétences qui s'apprennent et se développent.</p>
+			
+			<h2>Les piliers de la préparation mentale</h2>
+			<h3>1. La gestion du stress et des émotions</h3>
+			<p>Apprendre à reconnaître et à canaliser ses émotions est la première étape. Le stress n'est pas votre ennemi - c'est un signal que vous pouvez apprendre à utiliser à votre avantage.</p>
+			
+			<h3>2. La concentration et l'attention</h3>
+			<p>Développer sa capacité à rester focalisé sur l'essentiel, à ignorer les distractions et à maintenir une attention optimale tout au long de la performance.</p>
+			
+			<h3>3. La confiance en soi</h3>
+			<p>Construire une confiance solide, basée sur des fondations réelles et non sur des illusions. Une confiance qui résiste aux échecs et aux doutes.</p>
+			
+			<h3>4. La motivation et les objectifs</h3>
+			<p>Définir des objectifs clairs et mobilisateurs, et maintenir une motivation durable tout au long de votre parcours.</p>
+			
+			<h2>Comment intégrer la préparation mentale ?</h2>
+			<p>La préparation mentale se travaille au quotidien, pas seulement avant les compétitions. C'est un processus progressif qui demande régularité et engagement. Voici quelques conseils pour commencer :</p>
+			
+			<ul>
+				<li>Accordez 10 à 15 minutes par jour à des exercices de préparation mentale</li>
+				<li>Tenez un journal de vos performances et de vos états d'esprit</li>
+				<li>Travaillez avec un professionnel pour personnaliser votre approche</li>
+				<li>Intégrez ces pratiques dans votre routine d'entraînement</li>
+			</ul>
+			
+			<p>La préparation mentale n'est pas un luxe réservé aux élites - c'est un outil accessible à tous ceux qui souhaitent progresser et se dépasser.</p>
+		`
+	},
+	"gerer-stress-performance": {
+		title: "Comment gérer le stress pour optimiser sa performance",
+		excerpt:
+			"Le stress n'est pas toujours votre ennemi. Apprenez à le canaliser pour en faire un allié de votre performance.",
+		date: "2024-01-08",
+		image: "/images/pexels-olly-3764164.jpg",
+		category: "Performance",
+		author: "Dimitri Helie",
+		content: `
+			<p>Le stress est souvent perçu comme un obstacle à la performance. Pourtant, lorsqu'il est bien compris et bien géré, il peut devenir un véritable allié. La clé réside dans notre capacité à le reconnaître, l'accepter et le canaliser.</p>
+			
+			<h2>Comprendre le stress</h2>
+			<p>Le stress est une réponse naturelle de notre organisme face à un défi. Il prépare notre corps et notre esprit à l'action. Le problème n'est pas le stress lui-même, mais notre relation avec lui.</p>
+			
+			<h2>Le bon stress vs le mauvais stress</h2>
+			<p>Il existe une forme positive de stress, l'eustress, qui nous motive et nous aide à nous dépasser. Et une forme négative, le distress, qui nous paralyse et nous épuise. L'objectif n'est pas d'éliminer le stress, mais de le maintenir dans la zone optimale.</p>
+			
+			<h2>Techniques de gestion du stress</h2>
+			<h3>La respiration</h3>
+			<p>Une respiration calme et profonde active le système parasympathique, réduisant naturellement l'anxiété. Pratiquez la cohérence cardiaque : 5 secondes d'inspiration, 5 secondes d'expiration.</p>
+			
+			<h3>La visualisation</h3>
+			<p>Imaginez-vous en train de réussir, de gérer efficacement les situations stressantes. Votre cerveau ne fait pas la différence entre une expérience vécue et une expérience imaginée.</p>
+			
+			<h3>Le dialogue interne</h3>
+			<p>Remplacez les pensées négatives par des affirmations constructives. "Je suis prêt" plutôt que "Je vais échouer".</p>
+			
+			<h2>Mettre en pratique</h2>
+			<p>La prochaine fois que vous ressentez du stress avant une échéance importante, rappelez-vous : ce stress est là pour vous aider. Accueillez-le, remerciez-le, et utilisez cette énergie pour vous concentrer sur l'action.</p>
+		`
+	},
+	"confiance-en-soi-athletes": {
+		title: "Construire une confiance solide : le pilier de la réussite",
+		excerpt:
+			"La confiance en soi ne s'improvise pas. Voici les étapes clés pour développer une confiance durable et résiliente.",
+		date: "2023-12-20",
+		image: "/images/voile-visuel.jpeg",
+		category: "Développement personnel",
+		author: "Dimitri Helie",
+		content: `
+			<p>La confiance en soi est souvent citée comme l'un des facteurs clés de la réussite. Mais qu'est-ce que la confiance vraiment ? Et comment la construire de manière solide et durable ?</p>
+			
+			<h2>Qu'est-ce que la confiance en soi ?</h2>
+			<p>La confiance en soi n'est pas une arrogance ni une illusion. C'est une connaissance réaliste de ses capacités, combinée à la conviction que l'on peut faire face aux défis qui se présentent.</p>
+			
+			<h2>Les fondations de la confiance</h2>
+			<h3>1. La connaissance de soi</h3>
+			<p>Connaître ses forces, ses faiblesses, ses valeurs et ses limites. Une confiance authentique repose sur une vision claire et honnête de soi-même.</p>
+			
+			<h3>2. L'expérience accumulée</h3>
+			<p>Chaque succès, même mineur, renforce la confiance. Célébrez vos victoires et tirez des leçons de vos échecs sans vous laisser définir par eux.</p>
+			
+			<h3>3. La préparation</h3>
+			<p>La confiance vient aussi de la préparation. Plus vous êtes préparé, plus vous vous sentez capable de faire face à l'imprévu.</p>
+			
+			<h3>4. L'entourage</h3>
+			<p>Entourez-vous de personnes qui vous soutiennent et vous challengent positivement. Évitez ceux qui sapent votre confiance.</p>
+			
+			<h2>Exercices pratiques</h2>
+			<ul>
+				<li>Tenez un "journal des victoires" : notez chaque jour 3 choses que vous avez bien faites</li>
+				<li>Fixez-vous des objectifs progressifs et atteignables</li>
+				<li>Pratiquez l'auto-compassion : traitez-vous comme vous traiteriez votre meilleur ami</li>
+				<li>Visualisez vos succès passés avant un défi important</li>
+			</ul>
+			
+			<h2>La confiance, un muscle à entraîner</h2>
+			<p>La confiance n'est pas un don, c'est une compétence qui se travaille. Chaque jour offre des opportunités de la renforcer. Commencez petit, soyez patient, et voyez votre confiance grandir progressivement.</p>
+		`
+	}
+} as const;
