@@ -7,6 +7,7 @@
     "build": "npm run build:studio && npm run copy:studio && astro build",
     "build:studio": "cd studio && npm run build -- --basePath /studio",
     "copy:studio": "node -e \"const f=require('fs');f.rmSync('public/studio',{recursive:true,force:true});f.cpSync('studio/dist','public/studio',{recursive:true});\"",
+    "postinstall": "cd studio && npm install",
     "preview": "astro preview",
     "astro": "astro"
   },

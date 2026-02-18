@@ -41,8 +41,9 @@ export interface SanityImage {
 
 export function urlFor(image: SanityImage | { asset: { url: string } }) {
   // Si l'image a déjà une URL directe (fallback), on la retourne
-  if ('url' in image.asset && typeof image.asset.url === 'string') {
-    return { url: () => image.asset.url as string }
+  const asset = image.asset
+  if ('url' in asset && typeof asset.url === 'string') {
+    return { url: () => asset.url }
   }
   return builder.image(image as SanityImage)
 }

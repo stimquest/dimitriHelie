@@ -1,0 +1,7 @@
+{
+  "json.schemaDownload.enable": true,
+  "json.schemas": [],
+  "frontmatter.schema.enabled": false,
+  "frontmatter.content.pageFolders": [],
+  "frontMatter.extensibility.schemas": []
+}
