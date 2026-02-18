@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c \"dir C:\\\\PL\\\\dimitriHelie\")",
+      "Bash(cmd /c \"dir C:\\\\PL\")",
+      "Read(//c/PL/dimitriHelie/studio/**)",
+      "Bash(powershell -Command:*)"
+    ]
+  }
+}

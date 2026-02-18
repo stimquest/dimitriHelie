@@ -4,12 +4,17 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run build:studio && npm run copy:studio && astro build",
+    "build:studio": "cd studio && npm run build -- --basePath /studio",
+    "copy:studio": "node -e \"const f=require('fs');f.rmSync('public/studio',{recursive:true,force:true});f.cpSync('studio/dist','public/studio',{recursive:true});\"",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
+    "@portabletext/react": "^6.0.2",
+    "@sanity/client": "^7.15.0",
+    "@sanity/image-url": "^2.0.3",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

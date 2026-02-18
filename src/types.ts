@@ -12,12 +12,12 @@ export interface ServiceModule {
     organization: string[];
     pricing: string;
   };
-  image: string;
+  image: string | null;
 }
 
 export interface Partner {
   name: string;
-  logoUrl?: string;
+  logoUrl: string | null;
 }
 
 export interface Diploma {

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Target, Star, Quote } from 'lucide-react';
-import { services, partners } from '../data';
 import ServiceDetail from './ServiceDetail';
+import type { ServiceModule, Partner } from '../types';
+
+interface Props {
+  services: ServiceModule[];
+  partners: Partner[];
+}
 
 const formatIds = ['flash-mental', 'ateliers', 'conferences'];
 
-const ServicesSection: React.FC = () => {
+const ServicesSection: React.FC<Props> = ({ services, partners }) => {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const selectedService = services.find(s => s.id === selectedServiceId);
 
@@ -139,28 +144,28 @@ const ServicesSection: React.FC = () => {
            </div>
         </div>
 
-         {/* Partners Section */}
-         <div className="mt-20 pt-16 border-t border-slate-200">
-            <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-500 mb-12">Ils me font confiance</p>
-            <div className="flex flex-wrap justify-center gap-x-12 gap-y-10 items-center max-w-5xl mx-auto">
-               {partners.map((partner, idx) => (
-                  <div key={idx} className="flex items-center justify-center">
-                     {partner.logoUrl ? (
-                        <img
-                          src={partner.logoUrl}
-                          alt={partner.name}
-                          title={partner.name}
-                          className="h-16 md:h-20 w-auto object-contain grayscale hover:grayscale-0 transition-[filter] duration-300"
-                        />
-                     ) : (
-                        <span className="font-display font-semibold text-slate-600 text-lg md:text-xl text-center">
-                           {partner.name}
-                        </span>
-                     )}
-                  </div>
-               ))}
-            </div>
-         </div>
+          {/* Partners Section */}
+          <div className="mt-20 pt-16 border-t border-slate-200">
+             <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-500 mb-12">Ils me font confiance</p>
+             <div className="flex flex-nowrap justify-center gap-x-12 items-center max-w-7xl mx-auto overflow-x-auto pb-4">
+                {partners.map((partner, idx) => (
+                   <div key={idx} className="flex items-center justify-center shrink-0">
+                      {partner.logoUrl ? (
+                         <img
+                           src={partner.logoUrl}
+                           alt={partner.name}
+                           title={partner.name}
+                           className="h-24 md:h-28 w-auto object-contain grayscale hover:grayscale-0 transition-[filter] duration-300"
+                         />
+                      ) : (
+                         <span className="font-display font-semibold text-slate-600 text-lg md:text-xl text-center whitespace-nowrap">
+                            {partner.name}
+                         </span>
+                      )}
+                   </div>
+                ))}
+             </div>
+          </div>
 
       </div>
       </div>

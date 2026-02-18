@@ -40,13 +40,15 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
         <div className="flex-1 overflow-y-auto">
 
               {/* Header Image — edge to edge in scroll area */}
-              <div className="w-full h-52 md:h-72 overflow-hidden bg-slate-200">
-                 <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                 />
-              </div>
+              {service.image && (
+                <div className="w-full h-52 md:h-72 overflow-hidden bg-slate-200">
+                  <img
+                     src={service.image}
+                     alt={service.title}
+                     className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
 
            <div className="p-6 md:p-10 lg:p-12">
 

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { diplomas } from '../data';
 import { Award, BadgeCheck, FileText, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Diploma } from '../types';
 
-const AboutSection: React.FC = () => {
+interface Props {
+  diplomas: Diploma[];
+}
+
+const AboutSection: React.FC<Props> = ({ diplomas }) => {
   const [showDiplomas, setShowDiplomas] = useState(false);
 
   return (
