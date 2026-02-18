@@ -8,16 +8,16 @@ const AboutSection: React.FC = () => {
 
   return (
     <>
-      <section id="about" className="py-24 bg-gradient-to-b from-white to-brand-lighter/30">
+      <section id="about" className="py-24 bg-linear-to-b from-white to-brand-lighter/30">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
             
             {/* Colonne Image */}
             <div className="w-full lg:w-5/12 relative">
                <div className="sticky top-32">
-                  <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-[3/4] bg-slate-100">
+                  <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-3/4 bg-slate-100">
                     <img 
-                      src="/images/IMG_7849-1-scaled.jpg" 
+                      src="/images/dimitriLande2.jpg" 
                       alt="Dimitri Helie" 
                       className="w-full h-full object-cover"
                     />
@@ -96,14 +96,14 @@ const AboutSection: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowDiplomas(false)}
-              className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[90]"
+              className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-90"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-4 md:inset-y-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl z-[100] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+              className="fixed inset-4 md:inset-y-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl z-100 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
             >
               <div className="flex items-center justify-between p-6 border-b border-slate-100">
                 <h3 className="font-display text-xl font-bold text-slate-800 flex items-center gap-2">

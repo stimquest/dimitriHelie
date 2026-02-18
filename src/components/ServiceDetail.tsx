@@ -17,7 +17,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[90]"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-90"
       />
 
       {/* Modal */}
@@ -26,7 +26,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="fixed inset-4 md:inset-y-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-3xl lg:max-w-4xl z-[100] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="fixed inset-4 md:inset-y-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-3xl lg:max-w-4xl z-100 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
       >
         {/* Close Button */}
         <button 
@@ -94,7 +94,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0 divide-y divide-slate-700 sm:divide-y-0">
                     {service.themes.map((theme, i) => (
                        <li key={i} className="flex items-start gap-2.5 py-2.5 border-b border-slate-700 last:border-b-0 text-[14px] leading-snug text-slate-300">
-                          <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                           <span className="flex-1">{theme}</span>
                        </li>
                     ))}
@@ -118,8 +118,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                        </div>
                        <ul className="space-y-2">
                           {service.infosPratiques.format.map((l, i) => (
-                             <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
-                                <span className="mt-[6px] w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
+                              <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
+                                 <span className="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
                                 {l}
                              </li>
                           ))}
@@ -133,8 +133,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                        </div>
                        <ul className="space-y-2">
                           {service.infosPratiques.audience.map((l, i) => (
-                             <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
-                                <span className="mt-[6px] w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
+                              <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
+                                 <span className="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
                                 {l}
                              </li>
                           ))}
@@ -148,8 +148,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                        </div>
                        <ul className="space-y-2">
                           {service.infosPratiques.organization.map((l, i) => (
-                             <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
-                                <span className="mt-[6px] w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
+                              <li key={i} className="text-[13px] leading-snug text-slate-700 flex items-start gap-2">
+                                 <span className="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0" />
                                 {l}
                              </li>
                           ))}

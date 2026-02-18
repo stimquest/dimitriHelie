@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Brain } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
       
       {/* Background gradient - Light and airy */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-brand-lighter to-secondary-light opacity-60"></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-lighter/40 to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-white via-brand-lighter to-secondary-light opacity-60"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-brand-lighter/40 to-transparent"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -63,26 +63,10 @@ const Hero: React.FC = () => {
                 <img 
                   src="/images/IMG_7808_carre.jpg" 
                   alt="Dimitri Helie - Préparateur Mental" 
-                  className="w-full h-[500px] object-cover object-top"
+                  className="w-full h-125 object-cover object-top"
                 />
                 {/* Overlay gradient subtle */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
-             </motion.div>
-
-             {/* Architecture Cognitive badge — posé sur le coin */}
-             <motion.div
-               initial={{ opacity: 0, y: 12 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.5, delay: 0.6 }}
-               className="absolute -bottom-5 -right-4 lg:-right-6 bg-white rounded-2xl shadow-lg ring-1 ring-slate-900/5 px-5 py-4 flex items-center gap-4 max-w-[260px]"
-             >
-                <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center shrink-0">
-                   <Brain size={20} className="text-white" />
-                </div>
-                <div>
-                   <p className="font-display font-bold text-slate-800 text-sm leading-tight">Architecture Cognitive</p>
-                   <p className="text-xs text-slate-400 mt-0.5">Méthode structurée pour des résultats concrets</p>
-                </div>
+                <div className="absolute inset-0 bg-linear-to-t from-slate-900/30 to-transparent"></div>
              </motion.div>
 
              {/* Decorative elements */}

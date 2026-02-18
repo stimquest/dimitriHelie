@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Brain } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,8 +32,8 @@ const Navbar: React.FC = () => {
         
         {/* Logo */}
         <a href="/" className="flex items-center gap-3 group">
-          <div className="text-brand transition-transform duration-300 group-hover:scale-110">
-            <Brain size={32} strokeWidth={1.5} />
+          <div className="transition-transform duration-300 group-hover:scale-110">
+            <img src="/images/favicon.png" alt="Dimitri Helie Logo" className="h-10 w-10 object-contain" />
           </div>
           <div className="flex flex-col">
             <span className="font-display font-bold text-xl leading-none text-slate-800 tracking-tight">Dimitri Helie</span>

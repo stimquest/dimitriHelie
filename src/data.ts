@@ -1,13 +1,13 @@
 import type { ServiceModule, Partner, Diploma } from './types';
 
 export const partners: Partner[] = [
-  { name: "Maison Régionale de la Performance" },
-  { name: "Centre Sportif de Normandie" },
-  { name: "Ligue de Voile Normandie" },
-  { name: "Académie du golf d'Omaha Beach" },
-  { name: "Ligue Normandie Char à Voile (FFCV)" },
-  { name: "Région Normandie" },
-  { name: "atyd Consulting" }
+  { name: "Maison Régionale de la Performance", logoUrl: "/logosPartenaires/maisonregional.png" },
+  { name: "Centre Sportif de Normandie", logoUrl: "/logosPartenaires/centersportifNormandie.jpg" },
+  { name: "Ligue de Voile Normandie", logoUrl: "/logosPartenaires/FFVNormandie.png" },
+  { name: "Académie du golf d'Omaha Beach", logoUrl: "/logosPartenaires/golfOmaha.png" },
+  { name: "Ligue Normandie Char à Voile (FFCV)", logoUrl: "/logosPartenaires/charavoileNormandie.png" },
+  { name: "Région Normandie", logoUrl: "/logosPartenaires/Logo_Région_Normandie.png" },
+  { name: "atyd Consulting", logoUrl: "/logosPartenaires/logo-atid-footer.png" }
 ];
 
 export const diplomas: Diploma[] = [
@@ -121,7 +121,7 @@ export const services: ServiceModule[] = [
       ],
       pricing: "Devis sur demande après échange préalable"
     },
-    image: "/images/pexels-krizz59-12838.jpg"
+    image: "/images/ecole.jpeg"
   },
   {
     id: "conferences",
@@ -168,7 +168,7 @@ export const services: ServiceModule[] = [
       ],
       pricing: "Devis sur demande après échange préalable"
     },
-    image: "/images/pexels-olly-3764164.jpg"
+    image: "/images/conference.jpg"
   },
   {
     id: "sportifs",
@@ -215,7 +215,7 @@ export const services: ServiceModule[] = [
       ],
       pricing: "Séance individuelle : 75 euros / Séance collective : sur devis"
     },
-    image: "/images/IMG_7764.jpg"
+    image: "/images/velo.jpg"
   },
   {
     id: "jeunesse",
@@ -261,7 +261,7 @@ export const services: ServiceModule[] = [
       ],
       pricing: "Séance individuelle : 75 euros"
     },
-    image: "/images/WhatsApp-Image-2024-09-26-a-19.49.40_da4b4fa9.jpg"
+    image: "/images/plageGroupe.jpg"
   },
   {
     id: "etudiants",
@@ -354,7 +354,7 @@ export const services: ServiceModule[] = [
       ],
       pricing: "Devis sur demande après échange préalable"
     },
-    image: "/images/379636872_1045656246459816_803858230480871231_n.jpg"
+    image: "/images/dimitriLande.jpg"
   }
 ];
 
