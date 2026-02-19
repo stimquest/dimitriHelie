@@ -4,13 +4,9 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PortableTextContent from '../../components/PortableTextContent';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
-import { fetchBlogSlugs, fetchBlogPost } from '../../lib/queries';
+import { fetchBlogPost } from '../../lib/queries';
 
-export async function getStaticPaths() {
-  const slugs = await fetchBlogSlugs();
-  return slugs.map(slug => ({ params: { slug } }));
-}
-
+// En mode SSR, pas de getStaticPaths() - le rendu se fait à la volée
 const { slug } = Astro.params;
 const post = await fetchBlogPost(slug!);
 
