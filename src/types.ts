@@ -12,6 +12,7 @@ export interface ServiceModule {
     organization: string[];
     pricing: string;
   };
+  icon: string | null;
   image: string | null;
 }
 

@@ -1,8 +1,27 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Target, Star, Quote } from 'lucide-react';
+import {
+  ArrowRight, Star, Quote,
+  Zap, Brain, Target, Trophy, Medal, Users, User, Mic,
+  BookOpen, GraduationCap, Briefcase, Heart, TrendingUp, Flame,
+  Lightbulb, Shield, Compass, Mountain, Clock, Presentation, Smile,
+} from 'lucide-react';
+import type { LucideProps } from 'lucide-react';
 import ServiceDetail from './ServiceDetail';
 import type { ServiceModule, Partner } from '../types';
+
+type LucideIcon = React.FC<LucideProps>;
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  Zap, Brain, Target, Trophy, Medal, Users, User, Mic,
+  BookOpen, GraduationCap, Briefcase, Heart, TrendingUp, Flame,
+  Lightbulb, Shield, Compass, Mountain, Clock, Presentation, Smile,
+};
+
+function ServiceIcon({ name }: { name: string | null }) {
+  const Icon = (name && ICON_MAP[name]) ? ICON_MAP[name] : Target;
+  return <Icon size={24} />;
+}
 
 interface Props {
   services: ServiceModule[];
@@ -69,7 +88,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
                >
                   <div className="mb-6">
                      <div className="w-12 h-12 bg-brand-lighter text-brand rounded-xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
-                        <Target size={24} />
+                        <ServiceIcon name={service.icon} />
                      </div>
                   </div>
                   <h3 className="font-display text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">
@@ -103,7 +122,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
                 >
                    <div className="mb-6">
                       <div className="w-12 h-12 bg-brand-lighter text-brand rounded-xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
-                         <Target size={24} />
+                         <ServiceIcon name={service.icon} />
                       </div>
                    </div>
                    <h3 className="font-display text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">

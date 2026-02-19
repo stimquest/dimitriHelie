@@ -15,6 +15,7 @@ const SERVICE_QUERY = `
     themesTitle,
     themes,
     infosPratiques,
+    icon,
     image
   }
 `
@@ -28,6 +29,7 @@ interface ServiceRaw {
   themesTitle: string
   themes: string[]
   infosPratiques: ServiceModule['infosPratiques']
+  icon?: string
   image: SanityImage | null
 }
 
@@ -35,6 +37,7 @@ export async function fetchServices(): Promise<ServiceModule[]> {
   const raw: ServiceRaw[] = await sanityClient.fetch(SERVICE_QUERY)
   return raw.map(s => ({
     ...s,
+    icon: s.icon ?? null,
     image: s.image ? urlFor(s.image).url() : null
   }))
 }

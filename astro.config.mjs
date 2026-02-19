@@ -10,6 +10,16 @@ export default defineConfig({
   integrations: [react()],
   output: 'server',
   adapter: vercel(),
+  // Configuration des images distantes (CDN Sanity)
+  image: {
+    domains: ['cdn.sanity.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
   vite: {
     // @ts-expect-error - Incompatibilité de types Vite entre @tailwindcss/vite et Astro
     plugins: [tailwindcss()]
