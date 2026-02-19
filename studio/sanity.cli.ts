@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: '0iqdyim9',
     dataset: 'production',
   },
+  studioHost: 'dimitri-helie',
 })

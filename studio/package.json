@@ -4,19 +4,19 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "sanity dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=4096 sanity build",
+    "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
   "dependencies": {
-    "@sanity/vision": "^5.10.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "sanity": "^5.10.0",
+    "@sanity/vision": "^3.85.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.85.1",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
+    "@types/react": "^18.3.12",
     "typescript": "^5.0.0"
   },
   "overrides": {
