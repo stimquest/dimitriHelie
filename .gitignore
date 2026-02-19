@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# Sanity Studio (déployé séparément via `sanity deploy`)
+public/studio/
 # generated types
 .astro/
 

@@ -6,7 +6,7 @@ import { createImageUrlBuilder } from '@sanity/image-url'
 // Il n'est jamais inclus dans le bundle JS envoyé au navigateur.
 // ─────────────────────────────────────────────────────────────────────────────
 export const sanityClient = createClient({
-  projectId: import.meta.env.SANITY_PROJECT_ID,
+  projectId: import.meta.env.SANITY_PROJECT_ID ?? '0iqdyim9',
   dataset: import.meta.env.SANITY_DATASET ?? 'production',
   apiVersion: '2024-01-01', // date fixe — ne jamais utiliser 'latest'
   useCdn: true,             // CDN en lecture seule, parfait pour le build statique

@@ -4,10 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run build:studio && npm run copy:studio && astro build",
-    "build:studio": "cd studio && npm run build -- --basePath /studio",
-    "copy:studio": "node -e \"const f=require('fs');f.rmSync('public/studio',{recursive:true,force:true});f.cpSync('studio/dist','public/studio',{recursive:true});let h=f.readFileSync('public/studio/index.html','utf8');h=h.replace(/href=\\\"\\/static\\//g,'href=\\\"/studio/static/').replace(/src=\\\"\\/static\\//g,'src=\\\"/studio/static/');f.writeFileSync('public/studio/index.html',h);\"",
-    "postinstall": "cd studio && npm install",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
