@@ -8,6 +8,7 @@ interface Props {
 }
 
 const Hero: React.FC<Props> = ({ homePage: hp }) => {
+  const heroImage     = hp?.heroImage          ?? null;
   const badge         = hp?.heroBadge         ?? 'Performance & Bien-être';
   const titleLine1    = hp?.heroTitle          ?? 'Libérez votre';
   const titleGradient = hp?.heroTitleGradient  ?? 'plein potentiel.';
@@ -74,7 +75,7 @@ const Hero: React.FC<Props> = ({ homePage: hp }) => {
                className="relative rounded-3xl overflow-hidden shadow-soft bg-slate-100"
              >
                 <img
-                  src="/images/IMG_7808_carre.jpg"
+                  src={heroImage ?? '/images/IMG_7808_carre.jpg'}
                   alt="Dimitri Helie - Préparateur Mental"
                   className="w-full h-125 object-cover object-top"
                 />

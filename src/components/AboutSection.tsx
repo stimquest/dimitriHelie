@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, BadgeCheck, FileText, X } from 'lucide-react';
+import { Award, BadgeCheck, Eye, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PortableText } from '@portabletext/react';
 import type { Diploma, HomePage } from '../types';
@@ -16,8 +16,9 @@ const FALLBACK_BODY = [
 ];
 
 const AboutSection: React.FC<Props> = ({ diplomas, homePage: hp }) => {
-  const [showDiplomas, setShowDiplomas] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  const aboutImage    = hp?.aboutImage        ?? null;
   const eyebrow       = hp?.aboutEyebrow      ?? 'Mon parcours';
   const title         = hp?.aboutTitle        ?? "De l'ingénieur R&D à la";
   const titleGradient = hp?.aboutTitleGradient ?? 'performance humaine.';
@@ -35,7 +36,7 @@ const AboutSection: React.FC<Props> = ({ diplomas, homePage: hp }) => {
                <div className="sticky top-32">
                   <div className="relative rounded-3xl overflow-hidden shadow-soft aspect-3/4 bg-slate-100">
                     <img
-                      src="/images/dimitriLande2.jpg"
+                      src={aboutImage ?? '/images/dimitriLande2.jpg'}
                       alt="Dimitri Helie"
                       className="w-full h-full object-cover"
                     />
@@ -72,71 +73,72 @@ const AboutSection: React.FC<Props> = ({ diplomas, homePage: hp }) => {
 
           {/* Diplomas Section */}
           <div className="mb-24">
-             <div className="flex items-center justify-between mb-8">
+             <div className="mb-8">
                 <h3 className="font-display text-2xl font-bold text-slate-800 flex items-center gap-3">
-                   <Award className="text-brand" /> Mes Diplômes & Certifications
+                   <Award className="text-brand" /> Diplômes & Certifications
                 </h3>
-                <button
-                   onClick={() => setShowDiplomas(true)}
-                   className="flex items-center gap-2 px-4 py-2 bg-brand-lighter text-brand rounded-xl font-semibold text-sm hover:bg-brand hover:text-white hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color,color] duration-300"
-                >
-                   <FileText size={18} /> Voir les diplômes
-                </button>
+                <p className="text-sm text-slate-400 mt-1 ml-9">Formations et accréditations professionnelles</p>
              </div>
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {diplomas.map((diploma, idx) => (
-                   <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-brand hover:shadow-card hover:-translate-y-1 transform-gpu transition-[transform,box-shadow,border-color] duration-300">
-                      <BadgeCheck className="text-brand mb-4" size={32} />
-                      <h4 className="font-bold text-slate-800 mb-2">{diploma.title}</h4>
-                      <p className="text-xs font-semibold uppercase text-brand mb-3">{diploma.institution} {diploma.year && `- ${diploma.year}`}</p>
-                      <p className="text-sm text-slate-500 leading-relaxed">
-                         {diploma.description}
-                      </p>
+                   <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col">
+                      <div className="h-1 w-10 bg-brand rounded-full mb-5" />
+                      <h4 className="font-bold text-slate-800 text-base leading-snug mb-2">{diploma.title}</h4>
+                      <p className="text-sm text-slate-500 leading-relaxed grow">{diploma.description}</p>
+                      <div className="flex items-center gap-2 pt-4 mt-4 border-t border-slate-100">
+                         <BadgeCheck className="text-brand shrink-0" size={15} />
+                         <span className="text-xs font-semibold text-slate-600 truncate">{diploma.institution}</span>
+                         <div className="ml-auto flex items-center gap-2 shrink-0">
+                            {diploma.year && <span className="text-xs text-slate-400">{diploma.year}</span>}
+                            <button
+                               onClick={() => diploma.image && setSelectedImage(diploma.image)}
+                               disabled={!diploma.image}
+                               className={`flex items-center gap-1 text-xs font-semibold transition-colors ${diploma.image ? 'text-brand hover:text-brand-dark cursor-pointer' : 'text-slate-300 cursor-not-allowed'}`}
+                            >
+                               <Eye size={12} /> Voir
+                            </button>
+                         </div>
+                      </div>
                    </div>
                 ))}
+
              </div>
           </div>
 
         </div>
       </section>
 
-      {/* Modal Diplomas */}
+      {/* Modal image diplôme / carte pro */}
       <AnimatePresence>
-        {showDiplomas && (
+        {selectedImage && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setShowDiplomas(false)}
-              className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-90"
+              onClick={() => setSelectedImage(null)}
+              className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-90"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-4 md:inset-y-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl z-100 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="fixed inset-4 md:inset-8 z-100 flex items-center justify-center pointer-events-none"
             >
-              <div className="flex items-center justify-between p-6 border-b border-slate-100">
-                <h3 className="font-display text-xl font-bold text-slate-800 flex items-center gap-2">
-                   <Award className="text-brand" /> Diplômes & Certifications
-                </h3>
+              <div className="relative pointer-events-auto">
                 <button
-                   onClick={() => setShowDiplomas(false)}
-                   className="p-2 rounded-full text-slate-400 hover:text-red-500 hover:bg-slate-50 transition-colors"
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute -top-4 -right-4 z-10 p-2 rounded-full bg-white text-slate-600 hover:text-red-500 shadow-lg transition-colors"
                 >
-                   <X size={24} />
+                  <X size={20} />
                 </button>
-              </div>
-              <div className="flex-1 overflow-auto p-6">
-                <div className="w-full h-full min-h-[60vh] bg-slate-50 rounded-2xl flex items-center justify-center">
-                   <iframe
-                     src="/documents/diplomes.pdf"
-                     className="w-full h-full min-h-[60vh] rounded-2xl"
-                     title="Diplômes"
-                   />
-                </div>
+                <img
+                  src={selectedImage}
+                  alt="Diplôme"
+                  className="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl object-contain"
+                />
               </div>
             </motion.div>
           </>

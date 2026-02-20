@@ -26,6 +26,7 @@ export interface Diploma {
   institution: string;
   year?: string;
   description: string;
+  image: string | null;
 }
 
 export interface Review {
@@ -36,6 +37,7 @@ export interface Review {
 
 export interface HomePage {
   // Hero
+  heroImage: string | null;
   heroBadge: string | null;
   heroTitle: string | null;
   heroTitleGradient: string | null;
@@ -44,6 +46,7 @@ export interface HomePage {
   heroCta1Url: string | null;
   heroCta2Text: string | null;
   // About
+  aboutImage: string | null;
   aboutEyebrow: string | null;
   aboutTitle: string | null;
   aboutTitleGradient: string | null;
@@ -59,4 +62,15 @@ export interface HomePage {
   formatsSectionSubtitle: string | null;
   reviewsSectionTitle: string | null;
   partnersSectionTitle: string | null;
+  // Footer
+  footerCtaTitle: string | null;
+  footerCtaTitleGradient: string | null;
+  footerCtaSubtitle: string | null;
+  footerScheduleText: string | null;
+  footerAddress: string | null;
+  footerMapUrl: string | null;
+  footerLinkedinUrl: string | null;
+  footerFacebookUrl: string | null;
+  footerCalendlyUrl: string | null;
+  footerCalendlyButtonText: string | null;
 }

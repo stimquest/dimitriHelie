@@ -154,12 +154,25 @@ const DIPLOMA_QUERY = `
     title,
     institution,
     year,
-    description
+    description,
+    image
   }
 `
 
+interface DiplomaRaw {
+  title: string
+  institution: string
+  year?: string
+  description: string
+  image: SanityImage | null
+}
+
 export async function fetchDiplomas(): Promise<Diploma[]> {
-  return sanityClient.fetch(DIPLOMA_QUERY)
+  const raw: DiplomaRaw[] = await sanityClient.fetch(DIPLOMA_QUERY)
+  return raw.map(d => ({
+    ...d,
+    image: d.image ? urlFor(d.image).url() : null,
+  }))
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -184,6 +197,7 @@ export async function fetchReviews(): Promise<Review[]> {
 
 const HOME_PAGE_QUERY = `
   *[_type == "homePage" && _id == "homePage"][0] {
+    heroImage,
     heroBadge,
     heroTitle,
     heroTitleGradient,
@@ -191,6 +205,7 @@ const HOME_PAGE_QUERY = `
     heroCta1Text,
     heroCta1Url,
     heroCta2Text,
+    aboutImage,
     aboutEyebrow,
     aboutTitle,
     aboutTitleGradient,
@@ -204,10 +219,31 @@ const HOME_PAGE_QUERY = `
     formatsSectionTitle,
     formatsSectionSubtitle,
     reviewsSectionTitle,
-    partnersSectionTitle
+    partnersSectionTitle,
+    footerCtaTitle,
+    footerCtaTitleGradient,
+    footerCtaSubtitle,
+    footerScheduleText,
+    footerAddress,
+    footerMapUrl,
+    footerLinkedinUrl,
+    footerFacebookUrl,
+    footerCalendlyUrl,
+    footerCalendlyButtonText
   }
 `
 
+interface HomePageRaw extends Omit<HomePage, 'heroImage' | 'aboutImage'> {
+  heroImage: SanityImage | null
+  aboutImage: SanityImage | null
+}
+
 export async function fetchHomePage(): Promise<HomePage | null> {
-  return sanityClient.fetch(HOME_PAGE_QUERY)
+  const raw: HomePageRaw | null = await sanityClient.fetch(HOME_PAGE_QUERY)
+  if (!raw) return null
+  return {
+    ...raw,
+    heroImage:  raw.heroImage  ? urlFor(raw.heroImage).url()  : null,
+    aboutImage: raw.aboutImage ? urlFor(raw.aboutImage).url() : null,
+  }
 }

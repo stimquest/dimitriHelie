@@ -89,7 +89,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
         <div className="mb-10">
            <h3 className="font-display text-2xl md:text-3xl font-bold text-slate-800 mb-2">{publicTitle}</h3>
            <p className="text-base text-slate-500 mb-8">{publicSubtitle}</p>
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
              {publicServices.map((service, index) => (
                <motion.div
                  key={service.id}
@@ -98,17 +98,17 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
                  viewport={{ once: true }}
                  transition={{ delay: index * 0.1 }}
                  onClick={() => setSelectedServiceId(service.id)}
-                 className="bg-white rounded-2xl p-8 shadow-card hover:shadow-lg hover:-translate-y-1 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border border-slate-200 hover:border-brand"
+                 className="bg-linear-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border border-slate-700/60 hover:border-brand/60"
                >
                   <div className="mb-6">
-                     <div className="w-12 h-12 bg-brand-lighter text-brand rounded-xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                     <div className="w-14 h-14 bg-brand/20 text-brand rounded-2xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
                         <ServiceIcon name={service.icon} />
                      </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-brand transition-colors">
                      {service.title}
                   </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-6 grow">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6 grow">
                       {service.shortDescription}
                    </p>
                    <div className="flex items-center gap-2 text-brand font-semibold text-sm mt-auto">

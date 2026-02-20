@@ -23,5 +23,5 @@ const [services, partners, diplomas, reviews, homePage] = await Promise.all([
     <AboutSection diplomas={diplomas} homePage={homePage} client:load />
     <ServicesSection services={services} partners={partners} reviews={reviews} homePage={homePage} client:load />
   </main>
-  <Footer client:load />
+  <Footer homePage={homePage} client:load />
 </Layout>

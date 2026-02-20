@@ -6,13 +6,22 @@ export default defineType({
   type: 'document',
 
   groups: [
-    { name: 'hero',     title: '🏠 Hero' },
-    { name: 'about',    title: '👤 À propos' },
-    { name: 'services', title: '🗂️ Section Services' },
+    { name: 'hero',     title: 'Hero' },
+    { name: 'about',    title: 'A propos' },
+    { name: 'services', title: 'Section Services' },
+    { name: 'footer',   title: 'Footer / Contact' },
   ],
 
   fields: [
     // ── HERO ──────────────────────────────────────────────────────────────────
+    defineField({
+      name: 'heroImage',
+      title: 'Photo principale (côté droit du hero)',
+      type: 'image',
+      group: 'hero',
+      options: { hotspot: true },
+      description: 'Portrait affiché à droite dans le hero. Format carré recommandé.',
+    }),
     defineField({
       name: 'heroBadge',
       title: 'Badge (petit texte au-dessus du titre)',
@@ -63,6 +72,14 @@ export default defineType({
     }),
 
     // ── À PROPOS ──────────────────────────────────────────────────────────────
+    defineField({
+      name: 'aboutImage',
+      title: "Photo de la section À propos",
+      type: 'image',
+      group: 'about',
+      options: { hotspot: true },
+      description: 'Portrait affiché à gauche dans la section À propos. Format portrait recommandé.',
+    }),
     defineField({
       name: 'aboutEyebrow',
       title: 'Surtitre (petit texte au-dessus)',
@@ -161,6 +178,75 @@ export default defineType({
       type: 'string',
       group: 'services',
       description: 'Ex: "Ils me font confiance"',
+    }),
+
+    // ── FOOTER / CONTACT ──────────────────────────────────────────────────────
+    defineField({
+      name: 'footerCtaTitle',
+      title: 'Footer CTA — titre (ligne normale)',
+      type: 'string',
+      group: 'footer',
+      description: 'Ex: "Prêt à libérer votre"',
+    }),
+    defineField({
+      name: 'footerCtaTitleGradient',
+      title: 'Footer CTA — titre (ligne en dégradé)',
+      type: 'string',
+      group: 'footer',
+      description: 'Ex: "potentiel mental ?"',
+    }),
+    defineField({
+      name: 'footerCtaSubtitle',
+      title: 'Footer CTA — sous-titre',
+      type: 'text',
+      rows: 2,
+      group: 'footer',
+      description: 'Texte sous le titre du footer',
+    }),
+    defineField({
+      name: 'footerScheduleText',
+      title: 'Horaires — texte mis en avant',
+      type: 'string',
+      group: 'footer',
+      description: 'Ex: "de 9h à 18h du lundi au samedi"',
+    }),
+    defineField({
+      name: 'footerAddress',
+      title: 'Cabinet — adresse',
+      type: 'string',
+      group: 'footer',
+      description: 'Ex: "1 rue de la foire, Montmartin-sur-Mer"',
+    }),
+    defineField({
+      name: 'footerMapUrl',
+      title: 'Cabinet — lien Google Maps',
+      type: 'url',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'footerLinkedinUrl',
+      title: 'LinkedIn — URL du profil',
+      type: 'url',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'footerFacebookUrl',
+      title: 'Facebook — URL de la page',
+      type: 'url',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'footerCalendlyUrl',
+      title: 'Calendly — URL de prise de RDV',
+      type: 'url',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'footerCalendlyButtonText',
+      title: 'Bouton Calendly — texte',
+      type: 'string',
+      group: 'footer',
+      description: 'Ex: "APPEL 30 MN"',
     }),
   ],
 

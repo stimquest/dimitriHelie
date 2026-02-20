@@ -30,6 +30,13 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'image',
+      title: 'Scan / photo du diplôme',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Image JPG ou PNG du diplôme, affichée dans une modale au clic.',
+    }),
+    defineField({
       name: 'order',
       title: "Ordre d'affichage",
       type: 'number',
