@@ -1,5 +1,5 @@
 import { sanityClient, urlFor, type SanityImage } from './sanity'
-import type { ServiceModule, Partner, Diploma } from '../types'
+import type { ServiceModule, Partner, Diploma, Review, HomePage } from '../types'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SERVICES
@@ -160,4 +160,54 @@ const DIPLOMA_QUERY = `
 
 export async function fetchDiplomas(): Promise<Diploma[]> {
   return sanityClient.fetch(DIPLOMA_QUERY)
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// REVIEWS
+// ─────────────────────────────────────────────────────────────────────────────
+
+const REVIEW_QUERY = `
+  *[_type == "review"] | order(order asc) {
+    name,
+    role,
+    text
+  }
+`
+
+export async function fetchReviews(): Promise<Review[]> {
+  return sanityClient.fetch(REVIEW_QUERY)
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HOME PAGE (singleton)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const HOME_PAGE_QUERY = `
+  *[_type == "homePage" && _id == "homePage"][0] {
+    heroBadge,
+    heroTitle,
+    heroTitleGradient,
+    heroSubtitle,
+    heroCta1Text,
+    heroCta1Url,
+    heroCta2Text,
+    aboutEyebrow,
+    aboutTitle,
+    aboutTitleGradient,
+    aboutQuote,
+    aboutBody,
+    servicesBannerBadge,
+    servicesBannerTitle,
+    servicesBannerSubtitle,
+    publicSectionTitle,
+    publicSectionSubtitle,
+    formatsSectionTitle,
+    formatsSectionSubtitle,
+    reviewsSectionTitle,
+    partnersSectionTitle
+  }
+`
+
+export async function fetchHomePage(): Promise<HomePage | null> {
+  return sanityClient.fetch(HOME_PAGE_QUERY)
 }

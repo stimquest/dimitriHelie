@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import ServiceDetail from './ServiceDetail';
-import type { ServiceModule, Partner } from '../types';
+import type { ServiceModule, Partner, Review, HomePage } from '../types';
 
 type LucideIcon = React.FC<LucideProps>;
 
@@ -23,25 +23,39 @@ function ServiceIcon({ name }: { name: string | null }) {
   return <Icon size={24} />;
 }
 
+const FALLBACK_REVIEWS: Review[] = [
+  { name: "Marc D.", role: "Athlète Haut Niveau", text: "Dimitri est un super préparateur mental. Il m'aide pour être meilleur dans mon sport le concours hippique. Depuis que nous travaillons ensembles mes performances ne cessent de s'améliorer. Je suis régulièrement dans le top 8. Il m'a apporté une nouvelle façon d'aborder les difficultés avec plus de sérénité." },
+  { name: "Katy B.", role: "Manager", text: "Une belle rencontre ! Dimitri a su m'accompagner avec beaucoup de bienveillance et de professionnalisme. Des conseils avisés, des recherches personnalisées pertinentes et des mises en pratiques très concrètes. Dimitri fait parti des personnes qui marque votre chemin de vie. Je vous le recommande sans hésitation." },
+  { name: "Richard D.", role: "Sportif", text: "Dimitri est très à l'écoute et m'a permis d'appréhender différemment la gestion du stress avant et pendant les compétitions. Il m'a permis de reprendre du plaisir dans la pratique de mon sport et donc d'être plus performant." },
+];
+
 interface Props {
   services: ServiceModule[];
   partners: Partner[];
+  reviews: Review[];
+  homePage: HomePage | null;
 }
 
 const formatIds = ['flash-mental', 'ateliers', 'conferences'];
 
-const ServicesSection: React.FC<Props> = ({ services, partners }) => {
+const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityReviews, homePage: hp }) => {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const selectedService = services.find(s => s.id === selectedServiceId);
 
   const formatServices = services.filter(s => formatIds.includes(s.id));
   const publicServices = services.filter(s => !formatIds.includes(s.id));
 
-  const reviews = [
-    { name: "Marc D.", role: "Athlète Haut Niveau", text: "Dimitri est un super préparateur mental. Il m'aide pour être meilleur dans mon sport le concours hippique. Depuis que nous travaillons ensembles mes performances ne cessent de s'améliorer. Je suis régulièrement dans le top 8. Il m'a apporté une nouvelle façon d'aborder les difficultés avec plus de sérénité." },
-    { name: "Katy B.", role: "Manager", text: "Une belle rencontre ! Dimitri a su m'accompagner avec beaucoup de bienveillance et de professionnalisme. Des conseils avisés, des recherches personnalisées pertinentes et des mises en pratiques très concrètes. Dimitri fait parti des personnes qui marque votre chemin de vie. Je vous le recommande sans hésitation." },
-    { name: "Richard D.", role: "Sportif", text: "Dimitri est très à l'écoute et m'a permis d'appréhender différemment la gestion du stress avant et pendant les compétitions. Il m'a permis de reprendre du plaisir dans la pratique de mon sport et donc d'être plus performant." }
-  ];
+  const reviews = sanityReviews.length > 0 ? sanityReviews : FALLBACK_REVIEWS;
+
+  const bannerBadge    = hp?.servicesBannerBadge    ?? "Offre d'accompagnement";
+  const bannerTitle    = hp?.servicesBannerTitle    ?? "Des solutions adaptées à vos enjeux de performance";
+  const bannerSubtitle = hp?.servicesBannerSubtitle ?? "Que vous soyez athlète, étudiant ou dirigeant, je vous propose des formats d'intervention ciblés et structurés.";
+  const publicTitle    = hp?.publicSectionTitle    ?? "Accompagnement par public";
+  const publicSubtitle = hp?.publicSectionSubtitle ?? "Un suivi personnalisé selon votre profil et vos objectifs";
+  const formatsTitle   = hp?.formatsSectionTitle   ?? "Formats d'intervention";
+  const formatsSubtitle = hp?.formatsSectionSubtitle ?? "Modules, ateliers et conférences adaptés à vos besoins";
+  const reviewsTitle   = hp?.reviewsSectionTitle   ?? "Témoignages de mes coachés";
+  const partnersTitle  = hp?.partnersSectionTitle  ?? "Ils me font confiance";
 
   return (
     <section id="services" className="relative">
@@ -56,12 +70,12 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
          <div className="absolute inset-0 bg-linear-to-b from-slate-900/70 via-slate-900/60 to-slate-900/80"></div>
          <div className="absolute inset-0 flex items-center justify-center text-center">
             <div className="max-w-3xl px-6">
-               <span className="text-brand-light font-semibold text-xs uppercase tracking-wider mb-3 block">Offre d'accompagnement</span>
+               <span className="text-brand-light font-semibold text-xs uppercase tracking-wider mb-3 block">{bannerBadge}</span>
                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                 Des solutions adaptées à <br/>vos enjeux de performance
+                 {bannerTitle}
                </h2>
                <p className="text-slate-300 text-lg max-w-xl mx-auto">
-                  Que vous soyez athlète, étudiant ou dirigeant, je vous propose des formats d'intervention ciblés et structurés.
+                  {bannerSubtitle}
                </p>
             </div>
          </div>
@@ -71,12 +85,12 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
       <div className="py-20 bg-linear-to-b from-white to-brand-lighter/20">
       <div className="container mx-auto px-6">
 
-        {/* Formats d'intervention */}
+        {/* Accompagnement par public */}
         <div className="mb-10">
-           <h3 className="font-display text-lg font-bold text-slate-800 mb-1">Formats d'intervention</h3>
-           <p className="text-sm text-slate-400 mb-6">Modules, ateliers et conférences adaptés à vos besoins</p>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-             {formatServices.map((service, index) => (
+           <h3 className="font-display text-2xl md:text-3xl font-bold text-slate-800 mb-2">{publicTitle}</h3>
+           <p className="text-base text-slate-500 mb-8">{publicSubtitle}</p>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+             {publicServices.map((service, index) => (
                <motion.div
                  key={service.id}
                  initial={{ opacity: 0, y: 20 }}
@@ -105,12 +119,12 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
             </div>
          </div>
 
-         {/* Accompagnement par public */}
-         <div className="mb-24">
-            <h3 className="font-display text-lg font-bold text-slate-800 mb-1">Accompagnement par public</h3>
-            <p className="text-sm text-slate-400 mb-6">Un suivi personnalisé selon votre profil et vos objectifs</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {publicServices.map((service, index) => (
+         {/* Formats d'intervention */}
+         <div className="mt-16 mb-24">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-slate-800 mb-2">{formatsTitle}</h3>
+            <p className="text-base text-slate-500 mb-8">{formatsSubtitle}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {formatServices.map((service, index) => (
                 <motion.div
                   key={service.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -142,7 +156,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
         {/* Reviews Section */}
         <div className="bg-white rounded-3xl p-10 md:p-16 border border-slate-200 shadow-card">
            <div className="text-center mb-12">
-              <h3 className="font-display text-2xl font-bold text-slate-800 mb-4">Témoignages de mes coachés</h3>
+              <h3 className="font-display text-2xl font-bold text-slate-800 mb-4">{reviewsTitle}</h3>
               <div className="flex justify-center gap-1 text-yellow-400 mb-2">
                  {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={20} />)}
               </div>
@@ -165,7 +179,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
 
           {/* Partners Section */}
           <div className="mt-20 pt-16 border-t border-slate-200">
-             <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-500 mb-12">Ils me font confiance</p>
+             <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-500 mb-12">{partnersTitle}</p>
              <div className="flex flex-nowrap justify-center gap-x-12 items-center max-w-7xl mx-auto overflow-x-auto pb-4">
                 {partners.map((partner, idx) => (
                    <div key={idx} className="flex items-center justify-center shrink-0">
@@ -191,9 +205,9 @@ const ServicesSection: React.FC<Props> = ({ services, partners }) => {
 
       <AnimatePresence>
         {selectedService && (
-          <ServiceDetail 
-            service={selectedService} 
-            onClose={() => setSelectedServiceId(null)} 
+          <ServiceDetail
+            service={selectedService}
+            onClose={() => setSelectedServiceId(null)}
           />
         )}
       </AnimatePresence>

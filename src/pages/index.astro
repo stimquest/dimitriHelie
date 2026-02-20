@@ -5,21 +5,23 @@ import Hero from '../components/Hero';
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
 import Footer from '../components/Footer';
-import { fetchServices, fetchPartners, fetchDiplomas } from '../lib/queries';
+import { fetchServices, fetchPartners, fetchDiplomas, fetchReviews, fetchHomePage } from '../lib/queries';
 
-const [services, partners, diplomas] = await Promise.all([
+const [services, partners, diplomas, reviews, homePage] = await Promise.all([
   fetchServices(),
   fetchPartners(),
   fetchDiplomas(),
+  fetchReviews(),
+  fetchHomePage(),
 ]);
 ---
 
 <Layout>
   <Navbar client:load />
   <main>
-    <Hero client:load />
-    <AboutSection diplomas={diplomas} client:load />
-    <ServicesSection services={services} partners={partners} client:load />
+    <Hero homePage={homePage} client:load />
+    <AboutSection diplomas={diplomas} homePage={homePage} client:load />
+    <ServicesSection services={services} partners={partners} reviews={reviews} homePage={homePage} client:load />
   </main>
   <Footer client:load />
 </Layout>

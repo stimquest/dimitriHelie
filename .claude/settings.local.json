@@ -4,7 +4,8 @@
       "Bash(cmd /c \"dir C:\\\\PL\\\\dimitriHelie\")",
       "Bash(cmd /c \"dir C:\\\\PL\")",
       "Read(//c/PL/dimitriHelie/studio/**)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(npm run deploy:*)"
     ]
   }
 }
