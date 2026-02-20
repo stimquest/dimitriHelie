@@ -119,6 +119,14 @@ export default defineType({
 
     // ── SECTION SERVICES ──────────────────────────────────────────────────────
     defineField({
+      name: 'servicesBannerImage',
+      title: 'Bannière — image de fond',
+      type: 'image',
+      group: 'services',
+      options: { hotspot: true },
+      description: 'Photo affichée en fond de la bannière de la section Services. Format paysage recommandé.',
+    }),
+    defineField({
       name: 'servicesBannerBadge',
       title: 'Bannière — badge',
       type: 'string',

@@ -47,6 +47,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
 
   const reviews = sanityReviews.length > 0 ? sanityReviews : FALLBACK_REVIEWS;
 
+  const bannerImage    = hp?.servicesBannerImage    ?? '/images/voile-visuel.jpeg';
   const bannerBadge    = hp?.servicesBannerBadge    ?? "Offre d'accompagnement";
   const bannerTitle    = hp?.servicesBannerTitle    ?? "Des solutions adaptées à vos enjeux de performance";
   const bannerSubtitle = hp?.servicesBannerSubtitle ?? "Que vous soyez athlète, étudiant ou dirigeant, je vous propose des formats d'intervention ciblés et structurés.";
@@ -63,7 +64,7 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
       {/* Hero visuel — image voile */}
       <div className="relative h-72 md:h-96 overflow-hidden">
          <img
-           src="/images/voile-visuel.jpeg"
+           src={bannerImage}
            alt="Préparation mentale et performance"
            className="w-full h-full object-cover object-center"
          />

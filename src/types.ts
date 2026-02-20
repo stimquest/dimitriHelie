@@ -53,6 +53,7 @@ export interface HomePage {
   aboutQuote: string | null;
   aboutBody: unknown[] | null; // Portable Text blocks
   // Services section
+  servicesBannerImage: string | null;
   servicesBannerBadge: string | null;
   servicesBannerTitle: string | null;
   servicesBannerSubtitle: string | null;

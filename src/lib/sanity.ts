@@ -40,10 +40,13 @@ export interface SanityImage {
 }
 
 export function urlFor(image: SanityImage | { asset: { url: string } }) {
-  // Si l'image a déjà une URL directe (fallback), on la retourne
   const asset = image.asset
   if ('url' in asset && typeof asset.url === 'string') {
-    return { url: () => asset.url }
+    // Fallback URL directe — proxy chaînable pour rester compatible avec .fit().width().url()
+    const u = asset.url
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const passthrough: any = { url: () => u, fit: () => passthrough, width: () => passthrough, height: () => passthrough, auto: () => passthrough }
+    return passthrough
   }
   return builder.image(image as SanityImage)
 }

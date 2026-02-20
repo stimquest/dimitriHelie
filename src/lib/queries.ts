@@ -38,7 +38,7 @@ export async function fetchServices(): Promise<ServiceModule[]> {
   return raw.map(s => ({
     ...s,
     icon: s.icon ?? null,
-    image: s.image ? urlFor(s.image).url() : null
+    image: s.image ? urlFor(s.image).fit('crop').url() : null
   }))
 }
 
@@ -103,7 +103,7 @@ export async function fetchBlogList(): Promise<BlogListItem[]> {
   const raw: BlogRaw[] = await sanityClient.fetch(BLOG_LIST_QUERY)
   return raw.map(b => ({
     ...b,
-    image: b.image ? urlFor(b.image).url() : null
+    image: b.image ? urlFor(b.image).width(800).height(450).fit('crop').url() : null
   }))
 }
 
@@ -117,7 +117,7 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
   if (!raw) return null
   return {
     ...raw,
-    image: raw.image ? urlFor(raw.image).url() : null
+    image: raw.image ? urlFor(raw.image).width(1200).height(630).fit('crop').url() : null
   }
 }
 
@@ -141,7 +141,7 @@ export async function fetchPartners(): Promise<Partner[]> {
   const raw: PartnerRaw[] = await sanityClient.fetch(PARTNER_QUERY)
   return raw.map(p => ({
     name: p.name,
-    logoUrl: p.logo ? urlFor(p.logo).url() : null
+    logoUrl: p.logo ? urlFor(p.logo).fit('crop').url() : null
   }))
 }
 
@@ -171,7 +171,7 @@ export async function fetchDiplomas(): Promise<Diploma[]> {
   const raw: DiplomaRaw[] = await sanityClient.fetch(DIPLOMA_QUERY)
   return raw.map(d => ({
     ...d,
-    image: d.image ? urlFor(d.image).url() : null,
+    image: d.image ? urlFor(d.image).fit('crop').url() : null,
   }))
 }
 
@@ -211,6 +211,7 @@ const HOME_PAGE_QUERY = `
     aboutTitleGradient,
     aboutQuote,
     aboutBody,
+    servicesBannerImage,
     servicesBannerBadge,
     servicesBannerTitle,
     servicesBannerSubtitle,
@@ -233,9 +234,10 @@ const HOME_PAGE_QUERY = `
   }
 `
 
-interface HomePageRaw extends Omit<HomePage, 'heroImage' | 'aboutImage'> {
+interface HomePageRaw extends Omit<HomePage, 'heroImage' | 'aboutImage' | 'servicesBannerImage'> {
   heroImage: SanityImage | null
   aboutImage: SanityImage | null
+  servicesBannerImage: SanityImage | null
 }
 
 export async function fetchHomePage(): Promise<HomePage | null> {
@@ -243,7 +245,8 @@ export async function fetchHomePage(): Promise<HomePage | null> {
   if (!raw) return null
   return {
     ...raw,
-    heroImage:  raw.heroImage  ? urlFor(raw.heroImage).url()  : null,
-    aboutImage: raw.aboutImage ? urlFor(raw.aboutImage).url() : null,
+    heroImage:           raw.heroImage           ? urlFor(raw.heroImage).width(1200).height(1000).fit('crop').url()  : null,
+    aboutImage:          raw.aboutImage          ? urlFor(raw.aboutImage).width(900).height(1200).fit('crop').url()  : null,
+    servicesBannerImage: raw.servicesBannerImage ? urlFor(raw.servicesBannerImage).width(1920).height(640).fit('crop').url() : null,
   }
 }
