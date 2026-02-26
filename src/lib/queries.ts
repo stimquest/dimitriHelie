@@ -219,6 +219,8 @@ const HOME_PAGE_QUERY = `
     publicSectionSubtitle,
     formatsSectionTitle,
     formatsSectionSubtitle,
+    "publicSectionBgColor": publicSectionBgColor.hex,
+    "formatsSectionBgColor": formatsSectionBgColor.hex,
     reviewsSectionTitle,
     partnersSectionTitle,
     footerCtaTitle,
@@ -230,6 +232,8 @@ const HOME_PAGE_QUERY = `
     footerLinkedinUrl,
     footerFacebookUrl,
     footerCalendlyUrl,
+    footerCalendlyTitle,
+    footerCalendlyDescription,
     footerCalendlyButtonText
   }
 `

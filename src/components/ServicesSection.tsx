@@ -38,6 +38,16 @@ interface Props {
 
 const formatIds = ['flash-mental', 'ateliers', 'conferences'];
 
+/** Retourne 'dark' si le fond est sombre (→ texte clair), 'light' si le fond est clair (→ texte sombre). */
+function getColorTheme(hex: string | null, defaultTheme: 'dark' | 'light'): 'dark' | 'light' {
+  if (!hex) return defaultTheme;
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luminance > 0.4 ? 'light' : 'dark';
+}
+
 const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityReviews, homePage: hp }) => {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const selectedService = services.find(s => s.id === selectedServiceId);
@@ -57,6 +67,10 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
   const formatsSubtitle = hp?.formatsSectionSubtitle ?? "Modules, ateliers et conférences adaptés à vos besoins";
   const reviewsTitle   = hp?.reviewsSectionTitle   ?? "Témoignages de mes coachés";
   const partnersTitle  = hp?.partnersSectionTitle  ?? "Ils me font confiance";
+  const publicBgColor  = hp?.publicSectionBgColor  ?? null;
+  const formatsBgColor = hp?.formatsSectionBgColor ?? null;
+  const publicTheme  = getColorTheme(publicBgColor,  'dark');
+  const formatsTheme = getColorTheme(formatsBgColor, 'light');
 
   return (
     <section id="services" className="relative">
@@ -99,17 +113,18 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
                  viewport={{ once: true }}
                  transition={{ delay: index * 0.1 }}
                  onClick={() => setSelectedServiceId(service.id)}
-                 className="bg-linear-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border border-slate-700/60 hover:border-brand/60"
+                 className={`${publicBgColor ? '' : 'bg-linear-to-br from-slate-800 to-slate-900'} rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border hover:border-brand/60 ${publicTheme === 'dark' ? 'border-slate-700/60' : 'border-slate-200/60'}`}
+                 style={publicBgColor ? { backgroundColor: publicBgColor } : undefined}
                >
                   <div className="mb-6">
                      <div className="w-14 h-14 bg-brand/20 text-brand rounded-2xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
                         <ServiceIcon name={service.icon} />
                      </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-brand transition-colors">
+                  <h3 className={`font-display text-xl font-bold mb-3 group-hover:text-brand transition-colors ${publicTheme === 'dark' ? 'text-white' : 'text-slate-800'}`}>
                      {service.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6 grow">
+                  <p className={`text-sm leading-relaxed mb-6 grow ${publicTheme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}>
                       {service.shortDescription}
                    </p>
                    <div className="flex items-center gap-2 text-brand font-semibold text-sm mt-auto">
@@ -133,17 +148,18 @@ const ServicesSection: React.FC<Props> = ({ services, partners, reviews: sanityR
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setSelectedServiceId(service.id)}
-                  className="bg-white rounded-2xl p-8 shadow-card hover:shadow-lg hover:-translate-y-1 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border border-slate-200 hover:border-brand"
+                  className={`${formatsBgColor ? '' : 'bg-white'} rounded-2xl p-8 shadow-card hover:shadow-lg hover:-translate-y-1 transform-gpu transition-[transform,box-shadow,border-color] duration-300 cursor-pointer group flex flex-col h-full border hover:border-brand ${formatsTheme === 'light' ? 'border-slate-200' : 'border-slate-700/60'}`}
+                  style={formatsBgColor ? { backgroundColor: formatsBgColor } : undefined}
                 >
                    <div className="mb-6">
-                      <div className="w-12 h-12 bg-brand-lighter text-brand rounded-xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300">
+                      <div className={`w-12 h-12 text-brand rounded-xl flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors duration-300 ${formatsTheme === 'light' ? 'bg-brand-lighter' : 'bg-brand/20'}`}>
                          <ServiceIcon name={service.icon} />
                       </div>
                    </div>
-                   <h3 className="font-display text-xl font-bold text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                   <h3 className={`font-display text-xl font-bold mb-3 group-hover:text-brand transition-colors ${formatsTheme === 'light' ? 'text-slate-800' : 'text-white'}`}>
                       {service.title}
                    </h3>
-                   <p className="text-slate-500 text-sm leading-relaxed mb-6 grow">
+                   <p className={`text-sm leading-relaxed mb-6 grow ${formatsTheme === 'light' ? 'text-slate-500' : 'text-slate-300'}`}>
                      {service.shortDescription}
                   </p>
                   <div className="flex items-center gap-2 text-brand font-semibold text-sm mt-auto">

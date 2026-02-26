@@ -61,6 +61,8 @@ export interface HomePage {
   publicSectionSubtitle: string | null;
   formatsSectionTitle: string | null;
   formatsSectionSubtitle: string | null;
+  publicSectionBgColor: string | null;
+  formatsSectionBgColor: string | null;
   reviewsSectionTitle: string | null;
   partnersSectionTitle: string | null;
   // Footer
@@ -73,5 +75,7 @@ export interface HomePage {
   footerLinkedinUrl: string | null;
   footerFacebookUrl: string | null;
   footerCalendlyUrl: string | null;
+  footerCalendlyTitle: string | null;
+  footerCalendlyDescription: string | null;
   footerCalendlyButtonText: string | null;
 }

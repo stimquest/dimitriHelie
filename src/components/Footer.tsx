@@ -18,8 +18,10 @@ const Footer: React.FC<Props> = ({ homePage: hp }) => {
   const mapUrl           = hp?.footerMapUrl            ?? 'https://www.google.com/maps/search/?api=1&query=1+rue+de+la+foire+Montmartin+sur+Mer';
   const linkedinUrl      = hp?.footerLinkedinUrl       ?? '#';
   const facebookUrl      = hp?.footerFacebookUrl       ?? '#';
-  const calendlyUrl      = hp?.footerCalendlyUrl       ?? 'https://calendly.com/';
-  const calendlyBtnText  = hp?.footerCalendlyButtonText ?? 'APPEL 30 MN';
+  const calendlyUrl      = hp?.footerCalendlyUrl         ?? 'https://calendly.com/';
+  const calendlyTitle    = hp?.footerCalendlyTitle       ?? '1er contact';
+  const calendlyDesc     = hp?.footerCalendlyDescription ?? 'Le premier contact se fait par téléphone. Réservez votre créneau directement en ligne.';
+  const calendlyBtnText  = hp?.footerCalendlyButtonText  ?? 'APPEL 30 MN';
 
   return (
     <>
@@ -109,12 +111,13 @@ const Footer: React.FC<Props> = ({ homePage: hp }) => {
 
            {/* Prendre RDV */}
            <div className="bg-slate-800 border border-slate-700 rounded-2xl p-5">
-              <div className="flex items-center gap-2.5 mb-4">
+              <div className="flex items-center gap-2.5 mb-3">
                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
                     <Phone size={18} />
                  </span>
-                 <h4 className="font-display font-bold text-white text-[15px]">Prendre RDV</h4>
+                 <h4 className="font-display font-bold text-white text-[15px]">{calendlyTitle}</h4>
               </div>
+              <p className="text-sm leading-relaxed text-slate-400 mb-4">{calendlyDesc}</p>
               <a
                  href={calendlyUrl}
                  target="_blank"
