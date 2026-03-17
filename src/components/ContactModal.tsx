@@ -5,7 +5,7 @@ import { X, Send, CheckCircle, AlertCircle } from 'lucide-react';
 // Remplacez cette valeur par votre clé API Web3Forms.
 // Inscription gratuite sur https://web3forms.com  (250 envois/mois offerts)
 // ──────────────────────────────────────────────────────────────────────────────
-const WEB3FORMS_ACCESS_KEY = '735af0b8-fb99-4206-b768-45e92a32b0e2';
+const WEB3FORMS_ACCESS_KEY = '69a3d277-6e71-4ffe-ab91-e94f6ee923fe';
 
 interface Props {
   isOpen: boolean;
@@ -104,6 +104,8 @@ const ContactModal: React.FC<Props> = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot anti-bot — ne pas afficher à l'utilisateur */}
+              <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-1.5">Nom *</label>
