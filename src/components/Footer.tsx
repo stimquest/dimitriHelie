@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Linkedin, Facebook, ArrowUpRight, Clock, MapPin, Phone } from 'lucide-react';
 import ContactModal from './ContactModal';
+import CalendarModal from './CalendarModal';
 import type { HomePage } from '../types';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 
 const Footer: React.FC<Props> = ({ homePage: hp }) => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
 
   const ctaTitle         = hp?.footerCtaTitle         ?? 'Prêt à libérer votre';
   const ctaTitleGradient = hp?.footerCtaTitleGradient  ?? 'potentiel mental ?';
@@ -118,13 +120,12 @@ const Footer: React.FC<Props> = ({ homePage: hp }) => {
                  <h4 className="font-display font-bold text-white text-[15px]">{calendlyTitle}</h4>
               </div>
               <p className="text-sm leading-relaxed text-slate-400 mb-4">{calendlyDesc}</p>
-              <a
-                 href={calendlyUrl}
-                 target="_blank"
+              <button
+                 onClick={() => setCalendarOpen(true)}
                  className="inline-flex items-center justify-center gap-2 w-full bg-brand text-white font-bold text-sm px-5 py-2.5 rounded-xl hover:bg-brand-dark hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
               >
                  {calendlyBtnText}
-              </a>
+              </button>
            </div>
         </div>
 
@@ -136,7 +137,8 @@ const Footer: React.FC<Props> = ({ homePage: hp }) => {
     </footer>
 
     <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
-    </>
+    <CalendarModal isOpen={calendarOpen} onClose={() => setCalendarOpen(false)} url={calendlyUrl} title={calendlyTitle} />
+</>
   );
 };
 
