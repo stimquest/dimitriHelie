@@ -17,7 +17,6 @@ const Navbar: React.FC = () => {
     { name: 'À propos', href: '/#about' },
     { name: 'Services', href: '/#services' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -52,12 +51,11 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a 
-            href="https://calendly.com/" 
-            target="_blank"
+          <a
+            href="#contact"
             className="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color] duration-300"
           >
-            Prendre RDV
+            Contact
           </a>
         </nav>
 
@@ -85,11 +83,11 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a 
-            href="https://calendly.com/"
+          <a
+            href="#contact"
             className="bg-brand text-white px-8 py-4 rounded-xl font-semibold shadow-soft hover:-translate-y-0.5 active:translate-y-0 hover:shadow-glow transition-[transform,box-shadow] duration-300"
           >
-             Prendre RDV
+            Contact
           </a>
         </div>
       </div>

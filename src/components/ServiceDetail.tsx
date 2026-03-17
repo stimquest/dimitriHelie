@@ -165,13 +165,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                        <span className="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1">Tarification</span>
                        <span className="font-bold text-slate-900 text-lg">{service.infosPratiques.pricing}</span>
                     </div>
-                    <a
-                       href="https://calendly.com/"
-                       target="_blank"
-                       className="w-full md:w-auto bg-brand text-white px-8 py-3 rounded-xl font-bold text-sm shadow-lg hover:bg-brand-dark hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transform-gpu transition-[transform,box-shadow,background-color] duration-300 flex items-center justify-center gap-2"
-                    >
-                       <Calendar size={18} /> Réserver
-                    </a>
                  </div>
               </div>
 

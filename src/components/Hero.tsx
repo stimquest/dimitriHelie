@@ -49,14 +49,6 @@ const Hero: React.FC<Props> = ({ homePage: hp }) => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href={cta1Url}
-                  target="_blank"
-                  className="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-xl font-semibold shadow-soft hover:bg-brand-dark hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,background-color] duration-300"
-                >
-                  <Calendar size={18} />
-                  {cta1Text}
-                </a>
-                <a
                   href="#services"
                   className="inline-flex items-center justify-center gap-2 bg-white text-slate-600 border border-slate-200 px-8 py-4 rounded-xl font-semibold hover:border-brand hover:text-brand hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-[transform,box-shadow,border-color,color] duration-300"
                 >
